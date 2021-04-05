@@ -23,6 +23,8 @@
 
 export const environment = {
   production: false,
+  APPOINTMENT_URL:'http://localhost:9966/petclinic/api/appointment',
+
   OWNER_API_URL: 'http://localhost:9966/petclinic/api/owners',
   PET_API_URL: 'http://localhost:9966/petclinic/api/pets',
   PETTYPES_API_URL: 'http://localhost:9966/petclinic/api/pettypes',

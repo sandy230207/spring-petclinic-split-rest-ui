@@ -35,11 +35,17 @@ import {PartsModule} from './parts/parts.module';
 import {SpecialtiesModule} from './specialties/specialties.module';
 import {HttpErrorHandler} from './error.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
+import { AppointmentModule } from './appointment/appointment.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    UserRegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +58,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     VetsModule,
     SpecialtiesModule,
     PartsModule,
+    AppointmentModule,
     BrowserAnimationsModule,
     AppRoutingModule
   ],
