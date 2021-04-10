@@ -11,8 +11,12 @@ import { first } from 'rxjs/operators';
 })
 export class UserRegisterComponent implements OnInit {
   registerForm: FormGroup;
-    loading = false;
-    submitted = false;
+  loading = false;
+  submitted = false;
+  private errorMessage: string;
+  userName: string;
+  password: string;
+  formData: FormGroup;
 
     constructor(
       private formBuilder: FormBuilder,

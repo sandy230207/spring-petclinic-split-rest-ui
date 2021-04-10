@@ -38,6 +38,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { AppointmentModule } from './appointment/appointment.module';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 
@@ -46,6 +47,7 @@ import { AppointmentModule } from './appointment/appointment.module';
     AppComponent,
     LoginComponent,
     UserRegisterComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,

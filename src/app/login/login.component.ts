@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
   }
 
   gotoMain() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   

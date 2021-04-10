@@ -22,6 +22,7 @@
 
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import {PageNotFoundComponent} from './parts/page-not-found/page-not-found.component';
 import {WelcomeComponent} from './parts/welcome/welcome.component';
@@ -30,7 +31,8 @@ import { UserRegisterComponent } from './user-register/user-register.component';
 const appRoutes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
   {path: 'login', component:LoginComponent},
-  {path: 'signup',component:UserRegisterComponent},
+  {path: 'user-register',component:UserRegisterComponent},
+  {path: 'home-page', component:HomePageComponent},
   {path: '', component: WelcomeComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
