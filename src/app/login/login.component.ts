@@ -16,14 +16,17 @@ export class LoginComponent implements OnInit {
   private errorMessage: string;
   userName: string;
   password: string;
-  formData: FormGroup;
+  loginForm: FormGroup;
+  
+  vetAdminLogged: string;
+  userLogged: string;
 
   constructor(private router: Router, private authService: AuthService) {//, private authService: AuthService
 
    }
 
   ngOnInit() {
-    this.formData = new FormGroup({
+    this.loginForm = new FormGroup({
       userName: new FormControl("admin"),
       password: new FormControl("admin"),
     });
@@ -41,11 +44,27 @@ export class LoginComponent implements OnInit {
           console.log("Is Login Success: " + data);
           if(data)
             this.router.navigate(['/']);
-          if(!data)
+          else
             this.router.navigate(['/appointment']);
           
         });
   }
+  
+//Differrole login test
+  // loginRole(userrLogged: string, data: any){
+  //   this.userName = data.userName;
+  //   this.password = data.password;
+
+  //   this.authService.login(this.userName, this.password)
+  //      .subscribe( data => { 
+  //         console.log("Is Login Success: " + data);
+  //         if(data)
+  //           this.router.navigate(['/']);
+  //         if(!data)
+  //           this.router.navigate(['/appointment']);
+          
+  //       });
+  // }
 
   gotoMain() {
     this.router.navigate(['/']);

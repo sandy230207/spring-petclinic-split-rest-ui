@@ -14,7 +14,7 @@ export class UserRegisterComponent implements OnInit {
   loading = false;
   submitted = false;
   private errorMessage: string;
-  userName: string;
+  username: string;
   password: string;
   formData: FormGroup;
 
