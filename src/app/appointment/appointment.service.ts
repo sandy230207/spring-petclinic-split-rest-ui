@@ -11,6 +11,7 @@ import {HandleError, HttpErrorHandler} from '../error.service';
   providedIn: 'root'
 })
 export class AppointmentService {
+  // Fetch API URL
   entityUrl = environment.APPOINTMENT_URL;
   private readonly handlerError: HandleError;
 

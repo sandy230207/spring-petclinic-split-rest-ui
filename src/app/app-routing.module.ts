@@ -29,11 +29,11 @@ import {WelcomeComponent} from './parts/welcome/welcome.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 
 const appRoutes: Routes = [
-  {path: 'welcome', component: WelcomeComponent},
+  {path: '', component: WelcomeComponent},
   {path: 'login', component:LoginComponent},
+  {path: 'welcome', component: WelcomeComponent},
   {path: 'user-register',component:UserRegisterComponent},
   {path: 'home-page', component:HomePageComponent},
-  {path: '', component: WelcomeComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

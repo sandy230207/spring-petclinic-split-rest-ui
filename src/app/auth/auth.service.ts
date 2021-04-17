@@ -24,10 +24,10 @@ export class AuthService {
       })
    );
    }
-  //  logout(): void {
-  //   this.isUserLoggedIn = false;
-  //      localStorage.removeItem('isUserLoggedIn'); 
-  //   }
+   logout(): void {
+    this.isUserLoggedIn = false;
+       localStorage.removeItem('isUserLoggedIn'); 
+    }
 
   
    constructor() { }

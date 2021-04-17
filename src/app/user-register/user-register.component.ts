@@ -16,6 +16,7 @@ export class UserRegisterComponent implements OnInit {
   private errorMessage: string;
   username: string;
   password: string;
+  identityid: string;
   formData: FormGroup;
 
     constructor(
@@ -41,6 +42,38 @@ export class UserRegisterComponent implements OnInit {
   gotoMain() {
     this.router.navigate(['/']);
   }
+
+  onSubmit(form: any): void{
+    console.log('Form Data: ');
+    console.log(form);
+    // get the form value
+  }
+//   onSubmit1(form: any): void{
+//     this.submitted = true;
+//     console.log('Form Data: ');
+//     console.log(form);
+
+//     reset alerts on submit
+//     this.alertService.clear();
+
+//     stop here if form is invalid
+//     if (this.registerForm.invalid) {
+//         return;
+//     }
+
+//     this.loading = true;
+//     this.userService.register(this.registerForm.value)
+//         .pipe(first())
+//         .subscribe(
+//             data => {
+//                 this.alertService.success('Registration successful', true);
+//                 this.router.navigate(['/login']);
+//             },
+//             error => {
+//                 this.alertService.error(error);
+//                 this.loading = false;
+//             });
+// }
 
 }
 export const MY_DATE_FORMATS = {

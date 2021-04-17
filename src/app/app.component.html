@@ -31,7 +31,7 @@
             </a>
           </li>
          
-          <li  class="dropdown">
+          <li id="Owners" class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button"
                aria-haspopup="true" aria-expanded="false">Owners<span class="caret"></span>
             </a>
@@ -42,11 +42,11 @@
               </li>
             </ul>
           </li>
-          <!-- *ngIf="!isUserLoggedIn" -->
+          <!-- *ngIf="!isUserLoggedIn" *ngIf="isUserLoggedIn";else="isLogOut" *ngIf="isUserLoggedIn$ | async"-->
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button"
-               aria-haspopup="true" aria-expanded="false">Veterinarians<span class="caret"></span>
-            </a>
+              <a data-toggle="dropdown" role="button"
+                aria-haspopup="true" aria-expanded="false">Veterinarians<span class="caret"></span>
+              </a>
             <ul class="dropdown-menu">
               <li><a routerLink="/vets"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> All</span></a>
               </li>
@@ -54,13 +54,13 @@
                                                   aria-hidden="true"></span><span> Add New</span></a></li>
             </ul>
           </li>
-          <li>
+          <li id="Pet">
             <a routerLink="/pettypes" routerLinkActive="active" title="pettypes">
               <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
               <span>Pet Types</span>
             </a>
           </li>
-          <li>
+          <li id="Specialties">
             <a routerLink="/specialties" routerLinkActive="active" title="specialties">
               <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
               <span>Specialties</span>
@@ -77,12 +77,6 @@
               </li>
             </ul>
           </li>
-          <!-- <li>
-            <a routerLink="/pets" routerLinkActive="active" title="pets">
-              <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-              <span>Reservation</span>
-            </a>
-          </li> -->
     
           <!-- Login pannel --> 
          <!-- <li class="nav-item">
