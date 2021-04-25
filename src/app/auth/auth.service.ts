@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { User } from 'app/users/user';
+import { BehaviorSubject } from 'rxjs';
 import { Observable, of } from 'rxjs';
 
 // import { Observable, ObservableInput, of } from 'rxjs';
@@ -11,7 +13,7 @@ import { tap, delay } from 'rxjs/operators';
 export class AuthService {
   isUserLoggedIn: boolean = false;
   
-  login(userName: string, password: string): Observable<any>{
+  signin(userName: string, password: string): Observable<any>{
     console.log(userName);
     console.log(password);
     this.isUserLoggedIn = userName == 'admin' && password == 'admin';
@@ -31,4 +33,11 @@ export class AuthService {
 
   
    constructor() { }
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
+
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+  }
+  
 }

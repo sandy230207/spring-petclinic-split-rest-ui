@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     console.log("Login page: " + this.userName);
     console.log("Login page: " + this.password);
 
-    this.authService.login(this.userName, this.password)
+    this.authService.signin(this.userName, this.password)
        .subscribe( data => { 
           console.log("Is Login Success: " + data);
           if(data)

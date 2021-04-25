@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from 'app/testing/router-stubs';
 import { Appointment } from '../appointment';
 import { AppointmentService } from '../appointment.service';
@@ -12,6 +13,7 @@ export class AppointmentAddComponent implements OnInit {
 
   appointment: Appointment;
   errorMessage: string;
+  appointmentForm: FormGroup;
 
   constructor(private appointmentService: AppointmentService, private router: Router) { 
     this.appointment = {} as Appointment;
@@ -28,6 +30,7 @@ export class AppointmentAddComponent implements OnInit {
       },
       error => this.errorMessage = error as any
     );
+    console.log(appointment);
   }
 
   gotoAppointmentList() {

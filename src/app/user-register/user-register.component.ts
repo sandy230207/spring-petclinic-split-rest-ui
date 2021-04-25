@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from 'app/testing/router-stubs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { AuthService } from 'app/auth/auth.service';
 
 
 @Component({
@@ -14,12 +15,29 @@ export class UserRegisterComponent implements OnInit {
   loading = false;
   submitted = false;
   private errorMessage: string;
-  username: string;
-  password: string;
+  
   identityid: string;
-  formData: FormGroup;
 
-    constructor(
+  //signup
+  // enabled = true;
+  // username: string;
+  // password: string;
+  // id = 0;
+  // name = 'OWNER';
+
+  profileForm1 = this.formBuilder.group({
+    enabled: true,
+    password: [''],
+    identityid: [''],
+    roles: this.formBuilder.group({
+      id: ['0'],
+      name: ['OWNER']
+    }),
+  });
+
+  
+
+  constructor(
       private formBuilder: FormBuilder,
       private router: Router,
       
@@ -34,18 +52,29 @@ export class UserRegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this means it will verificate the input of the form
     this.registerForm = this.formBuilder.group({
       identityId: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      enabled: true,
+      roles: ({
+        id:['0'],
+        name: ['OWNER'],
+      })
   });
+  console.log(this.registerForm);
   }
   gotoMain() {
     this.router.navigate(['/']);
   }
 
-  onSubmit(form: any): void{
+  onSubmit(): void{
+    
     console.log('Form Data: ');
-    console.log(form);
+    console.log(this.registerForm);
+    console.log();
+
+
     // get the form value
   }
 //   onSubmit1(form: any): void{

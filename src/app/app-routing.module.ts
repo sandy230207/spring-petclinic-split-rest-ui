@@ -20,19 +20,24 @@
  * @author Vitaliy Fedoriv
  */
 
-import {NgModule} from '@angular/core';
+import {Component, NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import {PageNotFoundComponent} from './parts/page-not-found/page-not-found.component';
 import {WelcomeComponent} from './parts/welcome/welcome.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
+import { SigninComponent } from './users/signin/signin.component';
+import { SignupComponent } from './users/signup/signup.component';
 
 const appRoutes: Routes = [
   {path: '', component: WelcomeComponent},
-  {path: 'login', component:LoginComponent},
+  // {path: 'login', component:LoginComponent},
+  {path: 'signin' ,component: SigninComponent},
   {path: 'welcome', component: WelcomeComponent},
-  {path: 'user-register',component:UserRegisterComponent},
+  // {path: 'user-register',component:UserRegisterComponent},
+  {path: 'signup', component:SignupComponent},
   {path: 'home-page', component:HomePageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];

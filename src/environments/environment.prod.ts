@@ -23,11 +23,16 @@
 export const environment = {
   production: true,
   APPOINTMENT_URL:'http://localhost:9966/petclinic/api/appointment',
+  // SIGH_UP_API_URL:'http://localhost:9967/petclinic/api/users/signUp',
+  // SIGH_IN_API_URL:'http://localhost:9967/petclinic/api/users/signIn',
+
+  USERS_API_URL: 'http://localhost:9967/petclinic/api/users',
+
 
   OWNER_API_URL: 'http://localhost:9966/petclinic/api/owners',
   PET_API_URL: 'http://localhost:9966/petclinic/api/pets',
   PETTYPES_API_URL: 'http://localhost:9966/petclinic/api/pettypes',
-  SPECIALTY_API_URL: 'http://localhost:9966/petclinic/api/specialties',
-  VET_API_URL: 'http://localhost:9966/petclinic/api/vets',
+  SPECIALTY_API_URL: 'http://localhost:9967/petclinic/api/specialties',
+  VET_API_URL: 'http://localhost:9967/petclinic/api/vets',
   VISIT_API_URL: 'http://localhost:9966/petclinic/api/visits'
 };

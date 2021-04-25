@@ -39,6 +39,12 @@ import { LoginComponent } from './login/login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { AppointmentModule } from './appointment/appointment.module';
 import { HomePageComponent } from './home-page/home-page.component';
+// 2020/04/19 Http Interceptor 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { fakeBackendProvider } from './_helpers/fake-backends';
+import { UsersModule } from './users/users.module';
 
 
 
@@ -62,10 +68,17 @@ import { HomePageComponent } from './home-page/home-page.component';
     PartsModule,
     AppointmentModule,
     BrowserAnimationsModule,
+    UsersModule,
     AppRoutingModule
   ],
   providers: [
     HttpErrorHandler,
+    // 2020-04-19 HttpInceptor:Jwt & Error
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+        // provider used to create fake backend
+        // fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
