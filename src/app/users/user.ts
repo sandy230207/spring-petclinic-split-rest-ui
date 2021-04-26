@@ -1,5 +1,5 @@
 import {Role} from '../users/role';
-export class User {
+export interface User {
     enabled: boolean;
     password: string;
     roles: Role[];

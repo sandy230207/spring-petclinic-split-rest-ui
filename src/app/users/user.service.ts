@@ -15,24 +15,24 @@ export class UserService {
   private handlerError: HandleError;
 
   constructor(private http: HttpClient, private httpErrorHandler: HttpErrorHandler) {
-    this.handlerError = httpErrorHandler.createHandleError('OwnerService');
+    this.handlerError = httpErrorHandler.createHandleError('UserService');
   }
 
   signIn(user: User): Observable<User>{
-    return this.http.post<User>(this.entityUrl, user)
+    return this.http.post<User>(this.entityUrl+'/signIn', user)
       .pipe(
         catchError(this.handlerError('signIn', user))
       );
 
   }
 
-  signOut(user: User): Observable<User>{
-    return this.http.post<User>(this.entityUrl, user)
+  signUp(user: User): Observable<User>{
+    return this.http.post<User>(this.entityUrl+'/signUp', user)
       .pipe(
-        catchError(this.handlerError('signOut', user))
+        catchError(this.handlerError('signUp', user))
       );
-
   }
+  
   deleteUser(username: string){
     return this.http.delete<number>((this.entityUrl + '/' + username))
       .pipe(
