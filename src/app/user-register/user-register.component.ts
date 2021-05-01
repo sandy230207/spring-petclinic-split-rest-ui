@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { first } from 'rxjs/operators';
 import { AuthService } from 'app/auth/auth.service';
 
-
+// This component might delete after testing
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',

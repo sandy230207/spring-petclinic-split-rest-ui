@@ -80,7 +80,7 @@ export class SignupComponent implements OnInit {
 
   
 
-  onSubmit(data: any){    
+  onSubmit(data){    
     // let serializedForm= JSON.parse(data);
     // console.log(serializedForm)
 
@@ -92,9 +92,9 @@ export class SignupComponent implements OnInit {
 
 
     let newForm =({
-      username: String(data.username),
-      password: String(data.password),
       enabled: true,
+      password: String(data.password),
+      username: String(data.username),
       roles:[{
         id: 0,
         name: "OWNER"
@@ -103,7 +103,7 @@ export class SignupComponent implements OnInit {
 
     
 
-    let newsigninForm: any = newForm;
+    let newsigninForm: User = newForm;
 
     console.log('newForm')
     console.log(newsigninForm)
@@ -123,6 +123,21 @@ export class SignupComponent implements OnInit {
 
     
   }
+  // onSubmit(user: User) {
+    
+  //   user.enabled = true;
+  //   user.roles= [{id:0, name: "OWNER"}];
+
+  //   this.userService.signUp(newsigninForm)
+  //   .pipe(first())
+  //   .subscribe(
+  //     data => {
+  //       this.router.navigate(['/signin']);
+  //     },
+  //     error =>{
+  //       this.loading = false;
+  //     });
+  // }
 
 
 

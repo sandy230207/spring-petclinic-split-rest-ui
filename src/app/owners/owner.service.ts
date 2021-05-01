@@ -74,6 +74,26 @@ export class OwnerService {
          catchError(this.handlerError('deleteOwner', [ownerId]))
       );
   }
+  getOwnersList(lastName: string): Observable<Owner> {
+    return this.http.get<Owner>(this.entityUrl + '/*/lastName' + lastName)
+      .pipe(
+          catchError(this.handlerError('getOwnerById', {} as Owner))
+      );
+  }
+
+  getAllAppointmentByDate(date: Date): Observable<Owner> {
+    return this.http.get<Owner>(this.entityUrl + '/appointments/' + date)
+      .pipe(
+          catchError(this.handlerError('getOwnerById', {} as Owner))
+      );
+  }
+  getAppointmentByDate(ownerId: string, date: Date): Observable<Owner> {
+    return this.http.get<Owner>(this.entityUrl + '/appointments/' + ownerId + date)
+      .pipe(
+          catchError(this.handlerError('getOwnerById', {} as Owner))
+      );
+  }
+
 
 
 }

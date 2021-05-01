@@ -12,13 +12,15 @@ import {HandleError, HttpErrorHandler} from '../error.service';
 })
 export class AppointmentService {
   // Fetch API URL
-  entityUrl = environment.APPOINTMENT_URL;
+  entityUrl = environment.OWNER_API_URL;
   private readonly handlerError: HandleError;
 
 
   constructor(private http: HttpClient, private httpErrorHandler: HttpErrorHandler) { 
     this.handlerError = httpErrorHandler.createHandleError('OwnerService');
   }
+ 
+
   getAppointment(): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(this.entityUrl)
       .pipe(

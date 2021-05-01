@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'app/auth/auth.service';
 
 
-
+// This component might delete after testing
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
