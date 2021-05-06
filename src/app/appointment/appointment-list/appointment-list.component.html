@@ -1,12 +1,10 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="container xd-container">
     <h2>Appointment</h2>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
         <tr>
-          <!-- <th>Owner</th>
-          <th>Telephone</th> -->
           <th>Pet Name</th>
           <th>Pet Type</th>
           <th>Reserve Date</th>
@@ -41,5 +39,53 @@
       </div>
     </div>
   </div>
+</div> -->
+<div class="container-fluid">
+  <div class="container xd-container">
+    <h2>Appointment</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th></th>
+          <th></th>
+          <!-- <th>City</th>
+          <th>Telephone</th>
+          <th>Pets</th> -->
+        </tr>
+        </thead>
+
+        <tbody>
+        <!-- <tr *ngFor="let owner of owners"> -->
+          <!-- <td class="ownerFullName"><a routerLink="/owners/{{owner.id}}" routerLinkActive="active"
+                                       (click)="onSelect(owner)">{{ owner.firstName }} {{ owner.lastName }}</a></td>
+          <td>{{ owner.address }}</td>
+          <td>{{ owner.city }}</td>
+          <td>{{ owner.telephone }}</td> -->
+        <tr *ngFor="let visit of visits">
+          <td>{{ visit.date }}</td>
+          <td>{{ visit.description}}</td>
+
+          <!-- <td>
+        <tr *ngFor="let pet of owner.pets">
+          {{ pet.name }}
+        </tr>
+        </td> -->
+        <td>
+          <button class="btn btn-default" (click)="editVet(vet)">Edit Appointment</button>
+          <button class="btn btn-default" (click)="deleteVet(vet)">Delete Appointment</button>
+        </td>
+        </tr>
+
+        </tbody>
+      </table>
+      <div>
+        <button class="btn btn-default" (click)="addVisit(pet)">Add Appointment</button>
+      </div>
+    </div>
+  </div>
 </div>
+
 

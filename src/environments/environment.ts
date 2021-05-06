@@ -28,6 +28,8 @@ export const environment = {
   // SIGH_IN_API_URL:'http://localhost:9967/petclinic/api/users/signIn',
 
   USERS_API_URL: 'http://localhost:9967/petclinic/api/users',
+  USERS_OWNER_API_URL: 'http://localhost:9966/petclinic/api/users',
+
 
   OWNER_API_URL: 'http://localhost:9966/petclinic/api/owners',
   PET_API_URL: 'http://localhost:9966/petclinic/api/pets',

@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { OwnerService } from 'app/owners/owner.service';
+import { AppointmentDetailComponent } from './appointment-detail/appointment-detail.component';
+import { PetsModule } from 'app/pets/pets.module';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -28,7 +31,7 @@ export const MY_DATE_FORMATS = {
   declarations: [
     AppointmentAddComponent, 
     AppointmentListComponent, 
-    AppointmentEditComponent,
+    AppointmentEditComponent, AppointmentDetailComponent,
 
   ],
   imports: [
@@ -36,10 +39,12 @@ export const MY_DATE_FORMATS = {
     FormsModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    AppointmentRoutingModule
+    AppointmentRoutingModule,
+    PetsModule
   ],
   providers: [
     AppointmentService,
+    OwnerService,
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS}
   ]

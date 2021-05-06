@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from 'app/testing/router-stubs';
-import { Appointment } from '../appointment';
+import { Appointment, Owner } from '../appointment';
 import { AppointmentService } from '../appointment.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class AppointmentAddComponent implements OnInit {
   appointment: Appointment;
   errorMessage: string;
   appointmentForm: FormGroup;
+  date: Date;
 
   constructor(private appointmentService: AppointmentService, private router: Router) { 
     this.appointment = {} as Appointment;
@@ -21,16 +22,36 @@ export class AppointmentAddComponent implements OnInit {
 
   ngOnInit() {
   }
-  onSubmit(appointment: Appointment) {
-    appointment.id = null;
-    this.appointmentService.addAppointment(appointment).subscribe(
-      newAppointment => {
-        this.appointment = newAppointment;
-        this.gotoAppointmentList();
+  
+  
+  onSubmit1(date: any){
+    this.appointmentService.getAllAppointmentByDate(date).subscribe(
+      date => {
+        // this.date = date;
+        // this.gotoOwnersList();
+        console.log(date)
       },
-      error => this.errorMessage = error as any
+      error => this.errorMessage = <any>error
     );
-    console.log(appointment);
+    // appointment.id = null;
+    // this.appointmentService.addAppointment(appointment).subscribe(
+    //   newAppointment => {
+    //     this.appointment = newAppointment;
+    //     this.gotoAppointmentList();
+    //   },
+    //   error => this.errorMessage = error as any
+    // );
+    // this.appointmentService.getAllAppointmentByDate(date).subscribe(
+    //   // date => this.date = date,
+    //   error => this.errorMessage = <any> error);
+      //  .subscribe( data => { 
+      //     console.log("Get All Appointment " + data);
+      //     // if(data)
+      //     //   this.router.navigate(['/appointment']);
+      //     // else
+      //     //   this.router.navigate(['/']);
+          
+      //   });
   }
 
   gotoAppointmentList() {
@@ -39,6 +60,11 @@ export class AppointmentAddComponent implements OnInit {
   gotoMain(){
     this.router.navigate(['/appointment']);
   }
+
+  onSubmit(appointment: Appointment) {
+    this.router.navigate(['/owners', appointment.date]);
+  }
+  
 
 
 }

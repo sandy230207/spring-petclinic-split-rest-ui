@@ -1,11 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ResolvedReflectiveFactory } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Owner } from 'app/appointment/appointment';
 import { AuthService } from 'app/auth/auth.service';
-import { Router } from 'app/testing/router-stubs';
-import { first } from 'rxjs/operators';
+import { OwnerService } from 'app/owners/owner.service';
+import { ActivatedRoute, Router } from 'app/testing/router-stubs';
+import { map } from 'rxjs/operators';
 import { Role } from '../role';
-import { User } from '../user';
+import { User, UserOwner,} from '../user';
 import { UserService } from '../user.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -18,129 +22,70 @@ export class SignupComponent implements OnInit {
   roles: Role[];
   selectedRole: Role;
   errorMessage: string;
+  owner: Owner;
 
   signupForm: FormGroup;
 
   loading = false;
   submmitted = false;
   newForm: FormGroup;
+  ownerId: unknown;
 
 
   constructor(
     private userService: UserService, 
     // private authService: AuthService,
+    private ownerService: OwnerService,
     private router: Router, 
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) { 
     this.user = {} as User;
+    this.owner = {} as Owner;
     this.selectedRole = {} as Role;
     this.roles = [];
      
   }
 
   ngOnInit() {
-    this.signupForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required, Validators.minLength(6)]
-
-    })
-
     
   }
 
   gotoMain() {
     this.router.navigate(['/']);
-  }
+  }  
 
-  onSubmit2(user: User) {
-    user.enabled = true;
-    user.roles = [];
-    user.password ="test";
-    user.username = "test";
-    this.selectedRole.id = 0;
-    this.selectedRole.name = "OWNER"
-    
-    // this.vetService.addVet(vet).subscribe(
-    //   newVet => {
-    //     this.vet = newVet;
-    //     this.gotoVetList();
-    //   },
-    //   error => this.errorMessage = error as any
-    // );
-    this.userService.signUp(user)
-    .pipe(first())
-    .subscribe(
-      data => {
-        this.router.navigate(['/signin']);
-      },
-      error =>{
-        this.loading = false;
+  onSubmit(data: any) {
+    // Step1. addowner
+    // Step2. 取addowner response的ownerid，放到signup的roles.id
+    // this.owner.firstName =String(data.firstName)
+    // this.owner.lastName =String(data.lastName)
+
+    this.http.post("http://localhost:9966/petclinic/api/owners", this.owner)
+    .pipe(map((res:any) => {
+      // Step3. signup
+      let newForm =({
+        enabled: true,
+        password: String(data.password),
+        username: String(data.username),
+        uid: res.id,
+        roles:[{
+          name: "OWNER"
+        }]
       });
-  }
-
+      let ownersigninForm: UserOwner = newForm;    
+      this.submmitted = true,
   
-
-  onSubmit(data){    
-    // let serializedForm= JSON.parse(data);
-    // console.log(serializedForm)
-
-    // console.log(data)
-    // let parsedData = JSON.parse(data);
-    // console.log('///////////////////')
-    // console.log(parsedData.name);
-    // console.log(parsedData.name);
-
-
-    let newForm =({
-      enabled: true,
-      password: String(data.password),
-      username: String(data.username),
-      roles:[{
-        id: 0,
-        name: "OWNER"
-      }]
-    });
-
-    
-
-    let newsigninForm: User = newForm;
-
-    console.log('newForm')
-    console.log(newsigninForm)
-
-
-    this.submmitted = true,
-
-    this.userService.signUp(newsigninForm)
-    .pipe(first())
-    .subscribe(
-      data => {
-        this.router.navigate(['/signin']);
-      },
-      error =>{
-        this.loading = false;
-      });
-
-    
-  }
-  // onSubmit(user: User) {
-    
-  //   user.enabled = true;
-  //   user.roles= [{id:0, name: "OWNER"}];
-
-  //   this.userService.signUp(newsigninForm)
-  //   .pipe(first())
-  //   .subscribe(
-  //     data => {
-  //       this.router.navigate(['/signin']);
-  //     },
-  //     error =>{
-  //       this.loading = false;
-  //     });
-  // }
-
-
-
+      this.userService.signUpOwner(ownersigninForm).pipe().subscribe(
+        data => {
+          this.router.navigate(['/signin']);
+        },
+        error =>{
+          this.loading = false;
+        })
+    })).subscribe();
   
+  }
 
 }

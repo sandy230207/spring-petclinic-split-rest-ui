@@ -30,6 +30,7 @@ import {PetAddComponent} from '../pets/pet-add/pet-add.component';
 
 const ownerRoutes: Routes = [
   {path: 'owners', component: OwnerListComponent},
+  // {path: 'owners', component: OwnerDetailComponent},
   {path: 'owners/add', component: OwnerAddComponent},
   {path: 'owners/:id', component: OwnerDetailComponent},
   {path: 'owners/:id/edit', component: OwnerEditComponent},

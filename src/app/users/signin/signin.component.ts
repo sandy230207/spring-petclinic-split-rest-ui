@@ -14,6 +14,7 @@ export class SigninComponent implements OnInit {
   private errorMessage: string;
   username: string;
   password: string;
+  auth: number;
 
   constructor(private router: Router,private userService: UserService,private authService: AuthService) { }
 
@@ -21,12 +22,32 @@ export class SigninComponent implements OnInit {
     this.signinForm = new FormGroup({
       username: new FormControl("admin"),
       password: new FormControl("admin"),
+
     });
   //   this.signinForm = this.formBuilder.group({
   //     identityId: ['', Validators.required],
   //     password: ['', [Validators.required, Validators.minLength(6)]],
   // });
   }
+  // onSubmit(data: any) {
+  //   this.username = data.username;
+  //   this.password = data.password;
+  //   console.log(data)
+
+  //   console.log("Login page: " + this.username);
+  //   console.log("Login page: " + this.password);
+
+  //   this.userService.signIn(data)
+  //      .subscribe( data => { 
+  //         console.log("Is Login Success: " + data);
+  //         if(data)
+  //           this.router.navigate(['/appointment']);
+  //         else
+  //           this.router.navigate(['/']);
+          
+  //       });
+  // }
+ 
   onSubmit(data: any) {
     this.username = data.username;
     this.password = data.password;
@@ -35,34 +56,18 @@ export class SigninComponent implements OnInit {
     console.log("Login page: " + this.username);
     console.log("Login page: " + this.password);
 
-    this.userService.signIn(data)
+    this.userService.signInOwner(data)
        .subscribe( data => { 
           console.log("Is Login Success: " + data);
           if(data)
-            this.router.navigate(['/appointment']);
+            this.router.navigate(['owners/appointments',6,'2011-01-01']);
+            // this.router.navigate(['/owners', 6]);
           else
             this.router.navigate(['/']);
           
         });
+
   }
- 
-  // onSubmit(data: any) {
-  //   this.userName = data.userName;
-  //   this.password = data.password;
-
-  //   console.log("Login page: " + this.userName);
-  //   console.log("Login page: " + this.password);
-
-  //   this.authService.signin(this.userName, this.password)
-  //      .subscribe( data => { 
-  //         console.log("Is Login Success: " + data);
-  //         if(data)
-  //           this.router.navigate(['/']);
-  //         else
-  //           this.router.navigate(['/appointment']);
-          
-  //       });
-  // }
   gotoRegister(){
     this.router.navigate(['/signup']);
   }

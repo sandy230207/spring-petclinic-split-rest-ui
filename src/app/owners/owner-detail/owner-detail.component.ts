@@ -25,7 +25,6 @@ import {OwnerService} from '../owner.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Owner} from '../owner';
 
-
 @Component({
   selector: 'app-owner-detail',
   templateUrl: './owner-detail.component.html',

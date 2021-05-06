@@ -24,7 +24,6 @@ import {Component, NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { HomePageComponent } from './home-page/home-page.component';
-import { LoginComponent } from './login/login.component';
 import {PageNotFoundComponent} from './parts/page-not-found/page-not-found.component';
 import {WelcomeComponent} from './parts/welcome/welcome.component';
 import { UserRegisterComponent } from './user-register/user-register.component';

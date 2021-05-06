@@ -35,7 +35,6 @@ import {PartsModule} from './parts/parts.module';
 import {SpecialtiesModule} from './specialties/specialties.module';
 import {HttpErrorHandler} from './error.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { AppointmentModule } from './appointment/appointment.module';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -45,13 +44,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { fakeBackendProvider } from './_helpers/fake-backends';
 import { UsersModule } from './users/users.module';
+import { BasicAuthHtppInterceptorService } from './auth/basic-auth-htpp-interceptor.service';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     UserRegisterComponent,
     HomePageComponent,
   ],
@@ -73,6 +72,7 @@ import { UsersModule } from './users/users.module';
   ],
   providers: [
     HttpErrorHandler,
+    {provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true}
     // 2020-04-19 HttpInceptor:Jwt & Error
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
