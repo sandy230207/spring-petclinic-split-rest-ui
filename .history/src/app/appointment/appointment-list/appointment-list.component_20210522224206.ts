@@ -26,14 +26,15 @@ export class AppointmentListComponent implements OnInit {
   errorMessage: string;
   appointment: Appointment[];;
   //Testing Owner API
+  // owner: Owner;
   owners: Owner[];
 
   constructor(
     private appointmentService: AppointmentService,
     private router: Router,
-    // private ownerService: OwnerService,
-    // private route: ActivatedRoute,
-    // private petService: PetService,
+    private ownerService: OwnerService,
+    private route: ActivatedRoute,
+    private petService: PetService,
     private visitService: VisitService,
     private authService: AuthService,
   ) {
@@ -46,17 +47,21 @@ export class AppointmentListComponent implements OnInit {
     if (this.authService.currentUserValue.roles[0].name == 'ROLE_OWNER') {
       //Owner List
       this.appointmentService.getAppointmentByDate(this.authService.currentUserValue.uid, "now").subscribe(
-        // visits =>  this.visits = visits,
+        visits =>  this.visits = visits,
         error => this.errorMessage = <any>error);
       console.log("test!!!", this.visits);
     } else if (this.authService.currentUserValue.roles[0].name == 'ROLE_VET') {
       //Vet List 
       this.appointmentService.getAllAppointmentByDate("now").subscribe(
-        // visits => this.visits = visits,
+        visits => this.visits = visits,
         error => this.errorMessage = <any>error);
       console.log("test!!!", this.visits);
     }
 
+  }
+
+  editAppointment(appointment: Appointment) {
+    this.router.navigate(['/appointment', appointment.id, 'edit']);
   }
 
   deleteVisit(visit: Visit) {
@@ -72,8 +77,17 @@ export class AppointmentListComponent implements OnInit {
       error => this.errorMessage = error as any);
   }
 
+  addAppointment(pet: Pet) {
+    this.router.navigate(['/pets', pet.id, 'visits', 'add']);
+  }
   gotoHome() {
     this.router.navigate(['/welcome']);
+  }
+  addVisit(pet: Pet) {
+    this.router.navigate(['/pets', pet.id, 'visits', 'add']);
+  }
+  editVisit(visit: Visit) {
+    this.router.navigate(['/visits', visit.id, 'edit']);
   }
 
 

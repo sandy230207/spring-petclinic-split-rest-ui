@@ -43,7 +43,7 @@ import {PetsModule} from '../pets/pets.module';
     OwnerDetailComponent,
     OwnerEditComponent,
     OwnerAddComponent,
-    
+    OwnerUserComponent
   ],
   providers: [OwnerService]
 

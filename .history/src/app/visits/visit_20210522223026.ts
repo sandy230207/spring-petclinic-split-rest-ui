@@ -20,17 +20,13 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Visit } from 'app/visits/visit';
-import { VisitsModule } from 'app/visits/visits.module';
+import { Owner } from 'app/owners/owner';
 import {Pet} from '../pets/pet';
 
-export interface Owner {
+export interface Visit {
   id: number;
-  firstName: string;
-  lastName: string;
-  address: string;
-  city: string;
-  telephone: string;
-  pets: Pet[];
-  // visit: Visit[];
+  date: string;
+  description: string;
+  pet: Pet;
+  
 }

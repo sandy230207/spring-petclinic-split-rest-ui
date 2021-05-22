@@ -15,7 +15,6 @@ export interface Appointment {
   // type: PetType[];
   pet: Pet;
   // vets: Vet[];
-  owner: Owner;
 }
 export interface Owner {
   id: number;

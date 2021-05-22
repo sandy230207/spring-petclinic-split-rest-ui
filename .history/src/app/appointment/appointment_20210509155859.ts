@@ -15,13 +15,15 @@ export interface Appointment {
   // type: PetType[];
   pet: Pet;
   // vets: Vet[];
-  owner: Owner;
 }
 export interface Owner {
   id: number;
-  date: string;
-  description: string;
-  pet: Pet;
-  visit: Visit[];
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  telephone: string;
+  pets: Pet[];
+  // visits: Visit;
   // date: Date;
 }

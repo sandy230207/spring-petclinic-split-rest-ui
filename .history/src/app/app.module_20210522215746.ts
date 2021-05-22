@@ -37,6 +37,10 @@ import {HttpErrorHandler} from './error.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppointmentModule } from './appointment/appointment.module';
 import { HomePageComponent } from './home-page/home-page.component';
+// 2020/04/19 Http Interceptor 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { UsersModule } from './users/users.module';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
@@ -69,8 +73,15 @@ import { SignupComponent } from './users/signup/signup.component';
     HttpErrorHandler,
     AuthGuard,
     AuthService
+    // 2020-04-19 HttpInceptor:Jwt & Error
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+        // provider used to create fake backend
+        // fakeBackendProvider
   ],
   bootstrap: [AppComponent]
+  // bootstrap: [SigninComponent]
 })
 export class AppModule {
 }

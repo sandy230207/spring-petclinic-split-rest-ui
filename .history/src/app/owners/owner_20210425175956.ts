@@ -20,8 +20,6 @@
  * @author Vitaliy Fedoriv
  */
 
-import { Visit } from 'app/visits/visit';
-import { VisitsModule } from 'app/visits/visits.module';
 import {Pet} from '../pets/pet';
 
 export interface Owner {
@@ -32,5 +30,4 @@ export interface Owner {
   city: string;
   telephone: string;
   pets: Pet[];
-  // visit: Visit[];
 }

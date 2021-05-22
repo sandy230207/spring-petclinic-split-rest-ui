@@ -32,5 +32,5 @@ export interface Owner {
   city: string;
   telephone: string;
   pets: Pet[];
-  // visit: Visit[];
+  visit: Visit[];
 }
