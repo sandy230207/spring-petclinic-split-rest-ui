@@ -57,15 +57,6 @@ export class SigninComponent implements OnInit {
         .subscribe(data => {
           this.refreshPage()
           this.router.navigate(['/welcome']);
-          // if (data.roles[0].name == 'ROLE_VET' && this.authService.currentUserValue.roles[0].name == 'ROLE_VET') {
-          //   this.router.navigate(['/welcome']);
-          // } else {
-          //   this.router.navigate(['/signin']);
-          // }
-
-          // this.router.navigate([this.returnUrl]);
-          // this.router.navigate(['/']);
-
         });
     
     } else {
@@ -73,35 +64,15 @@ export class SigninComponent implements OnInit {
         .pipe(first())
         .subscribe(data => {
           this.refreshPage()
-          this.router.navigate(['owners/appointments', 6, '2011-01-01']);
+          this.router.navigate(['/welcome']);
+          // this.router.navigate(['owners/appointments', 12, 'now']);
 
-          // if (data.roles[0].name == 'ROLE_OWNER' && this.authService.currentUserValue.roles[0].name == 'ROLE_OWNER') {
-          //   this.router.navigate(['owners/appointments', 6, '2011-01-01']);
-          // } else {
-          //   this.router.navigate(['/signin']);
-          // }
-          // if (data && this.authrole == 2)
-
-          // this.router.navigate(['/owners', 6]);
-          // else if (data && this.authrole == 1)
-          //   this.router.navigate([this.returnUrl]);
+       
 
         });
    
 
     }
-
-
-    // this.userService.signInUser(data)
-    //    .subscribe( data => { 
-    //       console.log("Is Login Success: " + data);
-    //       if(data && this.authrole==2)
-    //         this.router.navigate(['owners/appointments',6,'2011-01-01']);
-    //         // this.router.navigate(['/owners', 6]);
-    //       else
-    //         this.router.navigate(['/']);
-
-    //     });
 
   }
   gotoRegister() {
