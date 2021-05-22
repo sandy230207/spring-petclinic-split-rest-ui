@@ -6,6 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 import {HandleError, HttpErrorHandler} from '../error.service';
 import { Owner } from 'app/owners/owner';
+import { Visit } from 'app/visits/visit';
 
 
 @Injectable({
@@ -108,10 +109,10 @@ export class AppointmentService {
       );
   }
 
-  getAllAppointmentByDate(date: Appointment): Observable<Appointment> {
-    return this.http.get<Appointment>(this.entityUrlOwner + '/appointments/' + date)
+  getAllAppointmentByDate(date: string): Observable<Owner> {
+    return this.http.get<Owner>(this.entityUrlOwner + '/appointments/' + date)
       .pipe(
-          catchError(this.handlerError('getAllAppointmentByDate', {} as Appointment))
+          catchError(this.handlerError('getAllAppointmentByDate', {} as Owner))
       );
   }
   getAppointmentByDate(ownerId: number, date: string): Observable<Owner> {
@@ -120,4 +121,12 @@ export class AppointmentService {
           catchError(this.handlerError('getAppointmentByDate', {} as Owner))
       );
   }
+
+  addVisit(visit: Visit): Observable<Visit> {
+    return this.http.post<Visit>(this.entityUrl, visit)
+      .pipe(
+        catchError(this.handlerError('addVisit', visit))
+      );
+  }
+  
 }

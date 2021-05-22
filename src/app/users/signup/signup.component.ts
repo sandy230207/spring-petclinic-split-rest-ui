@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
   }
 
   gotoMain() {
-    this.router.navigate(['/']);
+    this.router.navigate(['signin']);
   }  
 
   onSubmit(data: any) {
@@ -77,7 +77,7 @@ export class SignupComponent implements OnInit {
       let ownersigninForm: UserOwner = newForm;    
       this.submmitted = true,
   
-      this.userService.signUpOwner(ownersigninForm).pipe().subscribe(
+      this.userService.signUpUser(ownersigninForm).pipe().subscribe(
         data => {
           this.router.navigate(['/signin']);
         },

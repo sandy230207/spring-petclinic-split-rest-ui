@@ -1,56 +1,42 @@
+
 <div class="container-fluid">
   <div class="container xd-container">
     <h2>
       Pet Appointment
     </h2>
-    <form class="form-horizontal" (ngSubmit)="onSubmit(appointmentForm.values)" #appointmentForm="ngForm">
-      <!-- <div class="form-group" hidden="true">
-        <input type="text" hidden="true" class="form-control" id="id" [(ngModel)]="pet.id" name="id"/>
-        <input type="text" hidden="true" class="form-control" id="owner" [(ngModel)]="pet.owner" name="owner"/>
-      </div> -->
-      <!-- Owner Name -->
-      <!-- <div class="form-group">
-        <label for="owner" class="col-sm-2 control-label">Owner</label>
-        <div class="col-sm-10">
-          <input id="owner_name" name="owner_name" class="form-control" type="text"
-                 value="{{ currentOwner.firstName }} {{ currentOwner.lastName }}" readonly/>
-        </div>
-      </div>
-      <br/> -->
-      <!-- Owner Telephone -->
-      <!-- <div class="form-group has-feedback" [class.has-success]="telephone.dirty && telephone.valid" [class.has-error]="telephone.dirty && !telephone.valid">
-        <label for="telephone" class="col-sm-2 control-label">Telephone</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="telephone" [(ngModel)]="owner.telephone" name="telephone" required maxlength="10" pattern="^[0-9]{0,10}$" #telephone="ngModel"/>
-          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="telephone.valid" [class.glyphicon-remove]="!telephone.valid" aria-hidden="true"></span>
-          <span class="help-block" *ngIf="telephone.dirty && telephone.hasError('required')">Phone number is required</span>
-          <span class="help-block" *ngIf="telephone.dirty && telephone.hasError('maxlength')">Phone number cannot be more than 10 digits long</span>
-          <span class="help-block" *ngIf="telephone.dirty && telephone.hasError('pattern')" >Phone number only accept digits</span>
-        </div>
-      </div>
-      <br/> -->
-      <!-- Pet Name -->
-      <!-- <div class="form-group ">
-        <label for="name" class="col-sm-2 control-label">Pet Name</label>
-        <div class="col-sm-10">
-          <input id="name" name="name" class="form-control" type="text" [(ngModel)]="pet.name"/>
-        </div>
-      </div> -->
-      <!-- Pet Type -->
-      <!-- <div class="control-group">
+    <form id="visit" class="form-horizontal" (ngSubmit)="onSubmit(visitForm.value)" #visitForm="ngForm">
+
+      <div class="form-group has-feedback">
+
         <div class="form-group ">
-          <label for="type" class="col-sm-2 control-label">Pet Type</label>
+          <label class="col-sm-2 control-label">Date</label>
           <div class="col-sm-10">
-            <select id="type" name="type" class="form-control" [(ngModel)]="pet.type">
-              <option *ngFor="let type of petTypes"
-                      [ngValue]="type">{{ type.name }}
-              </option>
-            </select>
+            <input matInput [matDatepicker]="visitDateDatepicker" [ngModel]="visit.date | date:'yyyy-MM-dd'" name="date">
+            <mat-datepicker-toggle matSuffix [for]="visitDateDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #visitDateDatepicker></mat-datepicker>
           </div>
         </div>
-      </div> -->
+        <div class="form-group ">
+          <label class="col-sm-2 control-label">Description</label>
+          <div class="col-sm-10">
+            <input id="description" name="description" class="form-control" type="text"
+                   [(ngModel)]="visit.description"/>
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="hidden" name="id" id="id" [(ngModel)]="visit.id"/>
+          <input type="hidden" name="pet" id="pet" [(ngModel)]="visit.pet"/>
+          <button class="btn btn-default" type="button" (click)="gotoMain()">Back</button>
+          <button class="btn btn-default" type="submit">Send</button>
+        </div>
+      </div>
+    </form> 
+    <!-- <form class="form-horizontal" (ngSubmit)="onSubmit(appointmentForm.values)" #appointmentForm="ngForm"> -->
       <!-- Date -->
-      <div class="form-group ">
+      <!-- <div class="form-group ">
         <label class="col-sm-2 control-label">Date</label>
         <div class="col-sm-10">
           <input matInput [matDatepicker]="dateDatepicker" [ngModel]="date | date:'yyyy-MM-dd'" name="date">
@@ -58,22 +44,15 @@
           <mat-datepicker #dateDatepicker></mat-datepicker>
         </div>
       </div>
-      <!-- Vet Name -->
-      <!-- <div class="control-group">
-        <div class="form-group ">
-          <label for="type" class="col-sm-2 control-label">Vet Name</label>
-          <div class="col-sm-10">
-            <select class="form-control">
-              <option>Select the vet</option>
-              <option>James, Carter</option>
-              <option>Helen, Leary</option>
-              <option>Linda, Douglas</option>
-              <option>Henry, Stevens</option>
-          </select>
-            
-          </div>
+    <br>
+      <div class="form-group ">
+        <label class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-10">
+          <input id="description" name="description" class="form-control" type="text"
+                 [(ngModel)]="visit.description"/>
         </div>
-      </div> -->
+      </div>
+     
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <br/>
@@ -83,84 +62,6 @@
       </div>
     </form>
   </div>
-</div>
-
-<!-- <div class="container-fluid">
-  <div class="container xd-container">
-    <h2>
-      Pet Appointment
-    </h2>
-    <form class="form-horizontal" (ngSubmit)="onSubmit(appointmentForm.value)">   
-      <div class="form-group">
-        <label for="owner" class="col-sm-2 control-label">Owner</label>
-        <div class="col-sm-10">
-          <input id="owner_name" name="owner_name" class="form-control" type="text"
-                 value="{{ currentOwner.firstName }} {{ currentOwner.lastName }}" readonly/>
-        </div>
-      </div>
-      
-      <div class="form-group has-feedback" [class.has-success]="telephone.dirty && telephone.valid" [class.has-error]="telephone.dirty && !telephone.valid">
-        <label for="telephone" class="col-sm-2 control-label">Telephone</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="telephone" [(ngModel)]="owner.telephone" name="telephone" required maxlength="10" pattern="^[0-9]{0,10}$" #telephone="ngModel"/>
-          <span class="glyphicon form-control-feedback" [class.glyphicon-ok]="telephone.valid" [class.glyphicon-remove]="!telephone.valid" aria-hidden="true"></span>
-          <span class="help-block" *ngIf="telephone.dirty && telephone.hasError('required')">Phone number is required</span>
-          <span class="help-block" *ngIf="telephone.dirty && telephone.hasError('maxlength')">Phone number cannot be more than 10 digits long</span>
-          <span class="help-block" *ngIf="telephone.dirty && telephone.hasError('pattern')" >Phone number only accept digits</span>
-        </div>
-      </div>
-
-      <div class="form-group ">
-        <label for="name" class="col-sm-2 control-label">Pet Name</label>
-        <div class="col-sm-10">
-          <input id="name" name="name" class="form-control" type="text" [(ngModel)]="pet.name"/>
-        </div>
-      </div>
-
-      <div class="form-group ">
-        <label for="type" class="col-sm-2 control-label">Pet Type</label>
-        <div class="col-sm-10">
-          <select id="type" name="type" class="form-control" [(ngModel)]="pet.type">
-            <option *ngFor="let type of petTypes"
-                    [ngValue]="type">{{ type.name }}
-            </option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group ">
-        <label class="col-sm-2 control-label">Date</label>
-        <div class="col-sm-10">
-          <input matInput [matDatepicker]="appointmentDateDatepicker" [ngModel]="pet.birthDate | date:'yyyy-MM-dd'" name="appointmentDate">
-          <mat-datepicker-toggle [for]="birthDateDatepicker" matSuffix></mat-datepicker-toggle>
-          <mat-datepicker #birthDateDatepicker></mat-datepicker>
-        </div>
-      </div>
-
-      <div class="form-group ">
-        <label for="type" class="col-sm-2 control-label">Vet Name</label>
-        <div class="col-sm-10">
-          <select class="form-control">
-            <option>Select the vet</option>
-            <option>James, Carter</option>
-            <option>Helen, Leary</option>
-            <option>Linda, Douglas</option>
-            <option>Henry, Stevens</option>
-          </select>
-          
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <br/>
-          <button class="btn btn-default" type="button" (click)="gotoAppointmentList()"> Back</button>
-          <button class="btn btn-default" type="submit">Send</button>
-        </div>
-      </div>
-      
-    </form>
-   
-  </div>
 </div> -->
+
 

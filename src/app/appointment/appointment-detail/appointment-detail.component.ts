@@ -23,10 +23,10 @@ export class AppointmentDetailComponent implements OnInit {
     //   owner => this.owner = owner,
     //   error => this.errorMessage = <any> error);
 
-    const ownerlastName = this.route.snapshot.params['lastName'];
-    this.appointmentService.getOwnersList(ownerlastName).subscribe(
-      owner => this.owner = owner,
-      error => this.errorMessage = <any> error);
+    // const ownerlastName = this.route.snapshot.params['lastName'];
+    // this.appointmentService.getOwnersList(ownerlastName).subscribe(
+    //   owner => this.owner = owner,
+    //   error => this.errorMessage = <any> error);
 
   }
   gotoOwnersList() {
@@ -34,7 +34,7 @@ export class AppointmentDetailComponent implements OnInit {
   }
 
   editOwner() {
-    this.router.navigate(['/appointment', this.owner.lastName, 'edit']);
+    // this.router.navigate(['/appointment', this.owner.lastName, 'edit']);
   }
 
   addPet(owner: Owner) {

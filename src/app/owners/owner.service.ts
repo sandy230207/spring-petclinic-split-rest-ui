@@ -75,9 +75,9 @@ export class OwnerService {
       );
   }
   getOwnersList(lastName: string): Observable<Owner> {
-    return this.http.get<Owner>(this.entityUrl + '/*/lastName' + lastName)
+    return this.http.get<Owner>(this.entityUrl + '/*/lastname/' + lastName)
       .pipe(
-          catchError(this.handlerError('getOwnerById', {} as Owner))
+          catchError(this.handlerError('getOwnersList', {} as Owner))
       );
   }
 

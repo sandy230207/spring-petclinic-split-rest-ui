@@ -1,139 +1,71 @@
-<!-- <div class="container-fluid">
-
-  <nav class="navbar navbar-default " role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#"><span></span></a>
-    </div>
-  
-      <ul class="nav navbar-nav">
-        <li>
-          <a routerLink="welcome" title="home page">
-            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-            <span>Home</span>
-          </a>
-        </li>
-
-        <li class="">
-          <a routerLink="/login" routerLinkActive="active" title="login">
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-            <span>Sign in</span>
-          </a>
-        </li> 
-        <li class="">
-          <a routerLink="/user-register" routerLinkActive="active" title="user-register">
-            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-            <span>Sign up</span>
-          </a>
-        </li> 
-      </ul>
-    </div>
-  </nav>
-
-  </div>
-  
-  <router-outlet></router-outlet>
-  
-  <br/>
-  <br/>
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center"><img src="./assets/images/angular.png"
-                                           alt="Angular" height="80" width="80"/>
-        <img src="./assets/images/spring-pivotal-logo.png"
-             alt="Sponsored by Pivotal"/></div>
-    </div>
-  </div> -->
-
+<nav class="navbar navbar-default " role="navigation">
   <div class="container-fluid">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#"><span></span></a>
+  </div>
 
-    <nav class="navbar navbar-default " role="navigation">
-      <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#"><span></span></a>
-      </div>
-        <ul class="nav navbar-nav">
-          <li id="Owners" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button"
-               aria-haspopup="true" aria-expanded="false">Owners<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a routerLink="/owners"><span class="glyphicon glyphicon-search"
-                                                aria-hidden="true"></span><span> All</span></a></li>
-              <li><a routerLink="/owners/add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span> Add New</span></a>
-              </li>
-            </ul>
+    <ul class="nav navbar-nav">
+      <li>
+        <a routerLink="welcome" title="home page">
+          <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+          <span>Home</span>
+        </a>
+      </li>
+     
+      <li id="Owners" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button"
+           aria-haspopup="true" aria-expanded="false">Owners<span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/owners"><span class="glyphicon glyphicon-search"
+                                            aria-hidden="true"></span><span> All</span></a></li>
+          <li><a routerLink="/owners/add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span> Add New</span></a>
           </li>
-          <!-- *ngIf="!isUserLoggedIn" *ngIf="isUserLoggedIn";else="isLogOut" -->
-          <li id="Veterinarians" class="dropdown">
-            <a data-toggle="dropdown" role="button"
-               aria-haspopup="true" aria-expanded="false">Veterinarians<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a routerLink="/vets"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> All</span></a>
-              </li>
-              <li><a routerLink="/vets/add"><span class="glyphicon glyphicon-plus"
-                                                  aria-hidden="true"></span><span> Add New</span></a></li>
-            </ul>
-          </li>
-          <li id="Pet">
-            <a routerLink="/pettypes" routerLinkActive="active" title="pettypes">
-              <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-              <span>Pet Types</span>
-            </a>
-          </li>
-          <li id="Specialties">
-            <a routerLink="/specialties" routerLinkActive="active" title="specialties">
-              <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-              <span>Specialties</span>
-            </a>
-          </li>
-          <li id="Appointment"class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button"
-               aria-haspopup="true" aria-expanded="false">Appointment<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a routerLink="/appointment"><span class="glyphicon glyphicon-search"
-                                                aria-hidden="true"></span><span> All</span></a></li>
-              <li><a routerLink="/appointment/add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span> Make New</span></a>
-              </li>
-            </ul>
-          </li>
-          <!-- <li>
-            <a routerLink="/pets" routerLinkActive="active" title="pets">
-              <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-              <span>Reservation</span>
-            </a>
-          </li> -->
-    
-          <!-- Login pannel --> 
-         <!-- <li class="nav-item">
-            <div *ngIf="isUserLoggedIn; else isLogOut">
-                  <a class="nav-link" routerLink="/logout">Logout</a>
-            </div>
-    
-            <ng-template #isLogOut>
-                        <a class="glyphicon glyphicon-log-in" routerLink="/login">Login</a>
-            </ng-template>
-          </li> -->
-          <li class="">
-            <a routerLink="/login" routerLinkActive="active" title="login">
-              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-              <span>Sign in</span>
-            </a>
-          </li> 
-          <li class="">
-            <a routerLink="/user-register" routerLinkActive="active" title="user-register">
-              <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-              <span>Sign up</span>
-            </a>
-          </li> 
         </ul>
-      </div>
-    </nav>
-    
-    </div>
-    
-    <router-outlet></router-outlet>
+      </li>
+      <!-- *ngIf="!isUserLoggedIn" *ngIf="isUserLoggedIn";else="isLogOut" *ngIf="isUserLoggedIn$ | async"-->
+      <li class="dropdown" *ngIf="isUserLoggedIn">
+          <a data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false">Veterinarians<span class="caret"></span>
+          </a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/vets"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span> All</span></a>
+          </li>
+          <li><a routerLink="/vets/add"><span class="glyphicon glyphicon-plus"
+                                              aria-hidden="true"></span><span> Add New</span></a></li>
+        </ul>
+      </li>
+      <li id="Pet">
+        <a routerLink="/pettypes" routerLinkActive="active" title="pettypes">
+          <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+          <span>Pet Types</span>
+        </a>
+      </li>
+      <li id="Specialties">
+        <a routerLink="/specialties" routerLinkActive="active" title="specialties">
+          <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+          <span>Specialties</span>
+        </a>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button"
+           aria-haspopup="true" aria-expanded="false">Appointment<span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/appointment"><span class="glyphicon glyphicon-search"
+                                            aria-hidden="true"></span><span> All</span></a></li>
+          <li><a routerLink="/appointment/add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span> Make New</span></a>
+          </li>
+        </ul>
+      </li>
+      <li class="">
+        <a routerLink="" (click)="logout()" title="logout">
+          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+          <span>Log out</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
     
   
