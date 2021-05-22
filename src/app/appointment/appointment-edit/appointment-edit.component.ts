@@ -64,18 +64,4 @@ export class AppointmentEditComponent implements OnInit {
     this.router.navigate(['/owners', this.currentOwner.id]);
   }
 
-  // onSubmit(appointment: Appointment) {
-  //   const that = this;
-  //   this.appointmentService.updateAppointment(appointment.id.toString(), appointment).subscribe(
-  //     res => this.gotoAppointmentDetail(appointment),
-  //     error => this.errorMessage = error as any
-  //   );
-  // }
-
-  // gotoAppointmentDetail(appointment: Appointment) {
-  //   this.errorMessage = null;
-  //   this.router.navigate(['/appointment', appointment.id]);
-  // }
-
-
 }

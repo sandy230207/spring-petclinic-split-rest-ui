@@ -31,9 +31,6 @@ export class AppointmentListComponent implements OnInit {
   constructor(
     private appointmentService: AppointmentService,
     private router: Router,
-    // private ownerService: OwnerService,
-    // private route: ActivatedRoute,
-    // private petService: PetService,
     private visitService: VisitService,
     private authService: AuthService,
   ) {

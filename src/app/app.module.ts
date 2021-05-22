@@ -63,7 +63,7 @@ import { SignupComponent } from './users/signup/signup.component';
     AppointmentModule,
     BrowserAnimationsModule,
     UsersModule,
-    AppRoutingModule    
+    AppRoutingModule
   ],
   providers: [
     HttpErrorHandler,
