@@ -31,6 +31,7 @@ import {PetService} from '../pet.service';
 import {OwnerService} from '../../owners/owner.service';
 
 import * as moment from 'moment';
+import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 
 @Component({
   selector: 'app-pet-add',

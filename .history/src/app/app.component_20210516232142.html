@@ -1,0 +1,116 @@
+<!--
+  ~ /*
+  ~  * Copyright 2016-2017 the original author or authors.
+  ~  *
+  ~  * Licensed under the Apache License, Version 2.0 (the "License");
+  ~  * you may not use this file except in compliance with the License.
+  ~  * You may obtain a copy of the License at
+  ~  *
+  ~  *      http://www.apache.org/licenses/LICENSE-2.0
+  ~  *
+  ~  * Unless required by applicable law or agreed to in writing, software
+  ~  * distributed under the License is distributed on an "AS IS" BASIS,
+  ~  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  * See the License for the specific language governing permissions and
+  ~  * limitations under the License.
+  ~  */
+  -->
+<!-- *ngIf="currentUser" -->
+<!-- <div class="container"> -->
+  <h4 class="card-header">Welcome to Petclinic Website</h4>
+
+<nav class="navbar navbar-default " role="navigation" *ngIf="currentUser">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><span></span></a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li>
+        <a routerLink="welcome" title="home page">
+          <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+          <span>Home</span>
+        </a>
+      </li>
+
+      <li id="Owners" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+          aria-expanded="false">Owners<span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/owners"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span>
+                All</span></a></li>
+          <li><a routerLink="/owners/add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span> Add
+                New</span></a>
+          </li>
+        </ul>
+      </li>
+      <!-- *ngIf="isAdmin" -->
+      <!-- *ngIf="!isUserLoggedIn" *ngIf="isUserLoggedIn";else="isLogOut" *ngIf="isUserLoggedIn$ | async"-->
+      <li class="dropdown" *ngIf="isVet">
+        <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Veterinarians<span
+            class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/vets"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span>
+                All</span></a>
+          </li>
+          <li><a routerLink="/vets/add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span> Add
+                New</span></a></li>
+        </ul>
+      </li>
+      <!-- *ngIf="isAdmin" -->
+      <li id="Pet" *ngIf="isVet">
+        <a routerLink="/pettypes" routerLinkActive="active" title="pettypes">
+          <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+          <span>Pet Types</span>
+        </a>
+      </li>
+      <!-- *ngIf="isAdmin" -->
+      <li id="Specialties" *ngIf="isVet">
+        <a routerLink="/specialties" routerLinkActive="active" title="specialties">
+          <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+          <span>Specialties</span>
+        </a>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+          aria-expanded="false">Appointment<span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/appointment"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><span>
+                All</span></a></li>
+          <li><a routerLink="/appointment/add"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span><span>
+                Make New</span></a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="">
+        <a routerLink="" (click)="logout()" title="logout">
+          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+          <span>Log out</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+
+    <router-outlet></router-outlet>
+  </div>
+     
+<!-- </div> -->
+
+<!-- <router-outlet></router-outlet> -->
+<br/>
+<br/>
+<div class="container">
+  <div class="row">
+
+    <div class="col-12 text-center"><img src="./assets/images/angular.png" alt="Angular" height="80" width="80" />
+      <img src="./assets/images/spring-pivotal-logo.png" alt="Sponsored by Pivotal" />
+    </div>
+  </div>
+</div>
