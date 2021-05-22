@@ -1,0 +1,49 @@
+
+<div class="container-fluid">
+  <div class="container xd-container">
+    <h1><i class="glyphicon glyphicon glyphicon-edit" style="color:#F1C40F"></i> Appointment</h1>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <!-- <tr *ngFor="let owner of owners"> -->
+          <!-- <td class="ownerFullName"><a routerLink="/owners/{{owner.id}}" routerLinkActive="active"
+                                       (click)="onSelect(owner)">{{ owner.firstName }} {{ owner.lastName }}</a></td>
+          <td>{{ owner.address }}</td>
+          <td>{{ owner.city }}</td>
+          <td>{{ owner.telephone }}</td> -->
+        <tr *ngFor="let visit of visits">
+          <td>{{ visit.date }}</td>
+          <td>{{ visit.description}}</td>
+
+          <!-- <td>
+        <tr *ngFor="let pet of owner.pets">
+          {{ pet.name }}
+        </tr>
+        </td> -->
+        <td>
+          <!-- <button class="btn btn-default" (click)="editVisit(visit)">Edit Appointment</button> -->
+          <button class="btn btn-default" (click)="deleteVisit(visit)">Delete Appointment</button>
+        </td>
+        </tr>
+
+        </tbody>
+      </table>
+      <!-- <div>
+        <button class="btn btn-default" (click)="addAppointment(pet)">Add Appointment</button>
+  
+      </div> -->
+    </div>
+  
+  </div>
+</div>
+
+
