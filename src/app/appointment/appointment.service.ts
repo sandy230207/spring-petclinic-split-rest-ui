@@ -109,14 +109,14 @@ export class AppointmentService {
       );
   }
 
-  getAllAppointmentByDate(date: string): Observable<Owner> {
-    return this.http.get<Owner>(this.entityUrlOwner + '/appointments/' + date)
+  getAllAppointmentByDate(date: string): Observable<any> {
+    return this.http.get<any>(this.entityUrlOwner + '/appointments/' + date)
       .pipe(
-          catchError(this.handlerError('getAllAppointmentByDate', {} as Owner))
+          catchError(this.handlerError('getAllAppointmentByDate', {} as any))
       );
   }
-  getAppointmentByDate(ownerId: number, date: string): Observable<Owner> {
-    return this.http.get<Owner>(this.entityUrlOwner + '/appointments/' + ownerId + '/' + date)
+  getAppointmentByDate(ownerId: number, date: string): Observable<any> {
+    return this.http.get<any>(this.entityUrlOwner + '/appointments/' + ownerId + '/' + date)
       .pipe(
           catchError(this.handlerError('getAppointmentByDate', {} as Owner))
       );
