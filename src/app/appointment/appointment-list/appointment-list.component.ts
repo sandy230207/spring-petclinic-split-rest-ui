@@ -43,13 +43,13 @@ export class AppointmentListComponent implements OnInit {
     if (this.authService.currentUserValue.roles[0].name == 'ROLE_OWNER') {
       //Owner List
       this.appointmentService.getAppointmentByDate(this.authService.currentUserValue.uid, "now").subscribe(
-        // visits =>  this.visits = visits,
+        visits =>  this.visits = visits,
         error => this.errorMessage = <any>error);
       console.log("test!!!", this.visits);
     } else if (this.authService.currentUserValue.roles[0].name == 'ROLE_VET') {
       //Vet List 
       this.appointmentService.getAllAppointmentByDate("now").subscribe(
-        // visits => this.visits = visits,
+        visits => this.visits = visits,
         error => this.errorMessage = <any>error);
       console.log("test!!!", this.visits);
     }
