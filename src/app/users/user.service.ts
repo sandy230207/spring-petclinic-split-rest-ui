@@ -20,17 +20,17 @@ export class UserService {
   }
 
   signIn(user: User): Observable<User>{
-    return this.http.post<User>(this.entityUrl+'/signIn', user)
+    return this.http.post<User>(this.entityUrl+'/signin', user)
       .pipe(
-        catchError(this.handlerError('signIn', user))
+        catchError(this.handlerError('signin', user))
       );
 
   }
 
   signUp(user: User): Observable<User>{
-    return this.http.post<User>(this.entityUrl+'/signUp', user)
+    return this.http.post<User>(this.entityUrl+'/signup', user)
       .pipe(
-        catchError(this.handlerError('signUp', user))
+        catchError(this.handlerError('signup', user))
       );
   }
   
@@ -43,16 +43,16 @@ export class UserService {
   }
 
   signUpUser(user: UserOwner): Observable<UserOwner>{
-    return this.http.post<UserOwner>(this.entityUrlOwner+'/signUp', user)
+    return this.http.post<UserOwner>(this.entityUrlOwner+'/signup', user)
       .pipe(
-        catchError(this.handlerError('signUp', user))
+        catchError(this.handlerError('signup', user))
       );
   }
 
   signInUser(user: UserOwner): Observable<UserOwner>{
-    return this.http.post<UserOwner>(this.entityUrlOwner+'/signIn', user)
+    return this.http.post<UserOwner>(this.entityUrlOwner+'/signin', user)
       .pipe(
-        catchError(this.handlerError('signUp', user))
+        catchError(this.handlerError('signup', user))
       );
   }
 
