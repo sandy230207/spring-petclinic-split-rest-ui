@@ -42,7 +42,7 @@ export class AuthService {
   signInUser(user: UserOwner): Observable<UserOwner>{
     this.isUserLoggedIn =true;
     console.log("isUSerLoggedIn!!!!!!!!!!!!"+ this.isUserLoggedIn)
-    return this.http.post<UserOwner>(this.entityUrlOwner+'/signIn', user)
+    return this.http.post<UserOwner>(this.entityUrlOwner+'/signin', user)
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user) {
@@ -58,7 +58,7 @@ export class AuthService {
   signIn(user: UserOwner): Observable<UserOwner>{
     this.isUserLoggedIn =true;
     console.log("isUSerLoggedIn!!!!!!!!!!!!"+ this.isUserLoggedIn)
-    return this.http.post<UserOwner>(this.entityUrl+'/signIn', user)
+    return this.http.post<UserOwner>(this.entityUrl+'/signin', user)
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user) {
