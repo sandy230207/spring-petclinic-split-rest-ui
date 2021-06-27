@@ -83,7 +83,7 @@ export class SigninComponent implements OnInit {
     this.router.navigate(['/']);
   }
   refreshPage() {
-    window.location.replace('/');
+    window.location.replace('/appointment');
   }
 
 
