@@ -39,6 +39,7 @@ export class VetEditComponent implements OnInit {
   firstNameCtrl: FormControl;
   lastNameCtrl: FormControl;
   specialtiesCtrl: FormControl;
+  telephoneCtrl: FormControl;
   vet: Vet;
   specList: Specialty[];
   errorMessage: string;
@@ -55,11 +56,13 @@ export class VetEditComponent implements OnInit {
     this.firstNameCtrl = new FormControl('', [Validators.required, Validators.minLength(2)]);
     this.lastNameCtrl = new FormControl('', [Validators.required, Validators.minLength(2)]);
     this.specialtiesCtrl = new FormControl(null);
+    this.telephoneCtrl = new FormControl('', [Validators.required, Validators.maxLength(10)]);
     this.vetEditForm = this.formBuilder.group({
       id: this.idCtrl,
       firstName: this.firstNameCtrl,
       lastName: this.lastNameCtrl,
-      specialties: this.specialtiesCtrl
+      specialties: this.specialtiesCtrl,
+      telephone: this.telephoneCtrl
     });
   }
 
@@ -72,6 +75,7 @@ export class VetEditComponent implements OnInit {
     this.firstNameCtrl.setValue(this.vet.firstName);
     this.lastNameCtrl.setValue(this.vet.lastName);
     this.specialtiesCtrl.setValue(this.vet.specialties);
+    this.telephoneCtrl.setValue(this.vet.telephone);
   }
 
   ngOnInit() {
