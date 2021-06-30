@@ -26,6 +26,8 @@
       <tr>
         <th>Name</th>
         <th>Specialties</th>
+        <th>Telephone</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -38,6 +40,11 @@
         <td>
           <div *ngFor="let spec of vet.specialties">
             {{ spec.name }}
+          </div>
+        </td>
+        <td>
+          <div *ngFor="let spec of vet.telephone">
+            {{ vet.telephone }}
           </div>
         </td>
         <td>

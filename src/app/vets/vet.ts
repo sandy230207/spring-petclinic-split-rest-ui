@@ -27,4 +27,5 @@ export interface Vet {
   firstName: string;
   lastName: string;
   specialties: Specialty[];
+  telephone:string;
 }
