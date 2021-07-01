@@ -74,7 +74,7 @@ export class SignupComponent implements OnInit {
           name: "OWNER"
         }]
       });
-      let ownersigninForm: UserOwner = newForm;    
+      let ownersigninForm: UserOwner = newForm;
       this.submmitted = true,
   
       this.userService.signupUser(ownersigninForm).pipe().subscribe(
