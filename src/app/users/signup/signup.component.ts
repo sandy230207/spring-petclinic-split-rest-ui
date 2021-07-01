@@ -77,7 +77,7 @@ export class SignupComponent implements OnInit {
       let ownersigninForm: UserOwner = newForm;    
       this.submmitted = true,
   
-      this.userService.signUpUser(ownersigninForm).pipe().subscribe(
+      this.userService.signupUser(ownersigninForm).pipe().subscribe(
         data => {
           this.router.navigate(['/signin']);
         },
