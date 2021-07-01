@@ -45,14 +45,14 @@ export class UserService {
   signUpUser(user: UserOwner): Observable<UserOwner>{
     return this.http.post<UserOwner>(this.entityUrlOwner+'/signup', user)
       .pipe(
-        catchError(this.handlerError('signUp', user))
+        catchError(this.handlerError('signup', user))
       );
   }
 
   signInUser(user: UserOwner): Observable<UserOwner>{
     return this.http.post<UserOwner>(this.entityUrlOwner+'/signin', user)
       .pipe(
-        catchError(this.handlerError('signUp', user))
+        catchError(this.handlerError('signin', user))
       );
   }
 
