@@ -40,10 +40,12 @@ export class AppComponent {
     this.authService.currentUser.subscribe(x => this.currentUser = x);
 }
 get isVet() {
-  return this.currentUser && this.currentUser.roles[0].name == 'ROLE_VET';
+  console.log(this.currentUser.roles[0].name);
+  return this.currentUser.roles[0].name == 'ROLE_VET';
 }
 get isOwner(){
-  return this.currentUser && this.currentUser.roles[0].name == 'ROLE_OWNER';
+  console.log(this.currentUser.roles[0].name);
+  return this.currentUser.roles[0].name == 'ROLE_OWNER';
 }
 logout() {
     this.authService.logout();
