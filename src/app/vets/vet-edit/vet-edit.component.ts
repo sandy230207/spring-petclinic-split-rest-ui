@@ -61,8 +61,9 @@ export class VetEditComponent implements OnInit {
       id: this.idCtrl,
       firstName: this.firstNameCtrl,
       lastName: this.lastNameCtrl,
-      specialties: this.specialtiesCtrl,
-      telephone: this.telephoneCtrl
+      telephone: this.telephoneCtrl,
+      specialties: this.specialtiesCtrl
+      
     });
   }
 

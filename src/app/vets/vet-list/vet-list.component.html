@@ -25,8 +25,8 @@
       <thead>
       <tr>
         <th>Name</th>
-        <th>Specialties</th>
         <th>Telephone</th>
+        <th>Specialties</th>
         <th></th>
         <th></th>
         <th></th>
@@ -38,15 +38,18 @@
           {{ vet.firstName }} {{ vet.lastName }}
         </td>
         <td>
+          {{ vet.telephone }}
+        </td>
+        <td>
           <div *ngFor="let spec of vet.specialties">
             {{ spec.name }}
           </div>
         </td>
-        <td>
-          <div *ngFor="let spec of vet.telephone">
-            {{ vet.telephone }}
+        <!-- <td>
+          <div *ngFor="let vet of vets">
+          {{ vet.telephone }}
           </div>
-        </td>
+        </td> -->
         <td>
           <button class="btn btn-default" (click)="editVet(vet)">Edit Vet</button>
           <button class="btn btn-default" (click)="deleteVet(vet)">Delete Vet</button>
