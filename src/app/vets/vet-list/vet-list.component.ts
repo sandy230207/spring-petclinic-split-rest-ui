@@ -24,6 +24,8 @@ import {Component, OnInit} from '@angular/core';
 import {Vet} from '../vet';
 import {VetService} from '../vet.service';
 import {Router} from '@angular/router';
+import { UserOwner } from 'app/users/user';
+import { AuthService } from 'app/auth/auth.service';
 
 @Component({
   selector: 'app-vet-list',
@@ -34,9 +36,12 @@ export class VetListComponent implements OnInit {
   vets: Vet[];
   errorMessage: string;
   responseStatus: number;
+  currentUser: UserOwner;
 
-  constructor(private vetService: VetService, private router: Router) {
+  constructor(private vetService: VetService, private router: Router,private authService: AuthService
+    ) {
     this.vets = [];
+    this.authService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit() {
@@ -64,5 +69,14 @@ export class VetListComponent implements OnInit {
 
   editVet(vet: Vet) {
     this.router.navigate(['/vets', vet.id, 'edit']);
+  }
+
+  get isVet() {
+    console.log(this.currentUser.roles[0].name);
+    return this.currentUser.roles[0].name == 'ROLE_VET';
+  }
+  get isOwner(){
+    console.log(this.currentUser.roles[0].name);
+    return this.currentUser.roles[0].name == 'ROLE_OWNER';
   }
 }

@@ -53,7 +53,7 @@ export class VetEditComponent implements OnInit {
 
   buildForm() {
     this.idCtrl = new FormControl(null);
-    this.firstNameCtrl = new FormControl('', [Validators.required, Validators.minLength(2)]);
+    this.firstNameCtrl = new FormControl('', [Validators.required, Validators.minLength(1)]);
     this.lastNameCtrl = new FormControl('', [Validators.required, Validators.minLength(1)]);
     this.specialtiesCtrl = new FormControl(null);
     this.telephoneCtrl = new FormControl('', [Validators.required, Validators.maxLength(10)]);
@@ -61,9 +61,8 @@ export class VetEditComponent implements OnInit {
       id: this.idCtrl,
       firstName: this.firstNameCtrl,
       lastName: this.lastNameCtrl,
-      telephone: this.telephoneCtrl,
-      specialties: this.specialtiesCtrl
-      
+      specialties: this.specialtiesCtrl,
+      telephone: this.telephoneCtrl
     });
   }
 
