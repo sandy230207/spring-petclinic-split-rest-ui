@@ -36,8 +36,6 @@ const appRoutes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
   {path: '', component: WelcomeComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
-  
-  // {path: 'home-page', component:HomePageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 // , { useHash: true }
