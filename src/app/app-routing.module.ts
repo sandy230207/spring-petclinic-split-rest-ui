@@ -40,9 +40,9 @@ const appRoutes: Routes = [
   // {path: 'home-page', component:HomePageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
-
+// , { useHash: true }
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 

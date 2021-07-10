@@ -64,7 +64,7 @@ export class SigninComponent implements OnInit {
         .pipe(first())
         .subscribe(data => {
           this.refreshPage()
-          this.router.navigate(['/']);
+          // this.router.navigate(['/']);
           // this.router.navigate(['owners/appointments', 12, 'now']);
 
        
