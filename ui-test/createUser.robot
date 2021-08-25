@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 Library           RequestsLibrary
 
 *** Variables ***
-${URL}    http://localhost:4200
+${URL}    http://localhost:8080
 
 ${BROWSER}    Chrome
 ${USERNAME}    kristin
@@ -24,7 +24,7 @@ Create Owner User
     Create Owner User
     Page Should Contain Element    xpath=//form[contains(@id, 'signin')]
     Login As Owner    ${USERNAME}    ${PASSWORD}
-    Page Should Contain Element    xpath=//h2[contains(text(), 'Appointment')]
+    Page Should Contain Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]
     [Teardown]    Close Browser And Delete Testing User
 
 
@@ -56,4 +56,4 @@ Login As Owner
     Input Text      xpath=//input[contains(@name, 'password')]    ${PASSWORD}
     Click Button    xpath=//input[contains(@value, '2')]
     Click Button    xpath=//button[contains(text(), 'Login')]
-    Wait Until Page Contains Element    xpath=//h2[contains(text(), 'Appointment')]
+    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]

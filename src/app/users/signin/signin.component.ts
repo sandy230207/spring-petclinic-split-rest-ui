@@ -64,7 +64,6 @@ export class SigninComponent implements OnInit {
         .pipe(first())
         .subscribe(data => {
           this.refreshPage()
-          // this.router.navigate(['/']);
           // this.router.navigate(['owners/appointments', 12, 'now']);
 
        
@@ -83,7 +82,7 @@ export class SigninComponent implements OnInit {
     this.router.navigate(['/']);
   }
   refreshPage() {
-    window.location.replace('/appointment');
+    window.location.replace('/');
   }
 
 

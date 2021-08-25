@@ -3,7 +3,7 @@ Documentation     A Test That Test Create Function of Pet and Appointment as Own
 Library           SeleniumLibrary
 
 *** Variables ***
-${URL}    http://localhost:4200
+${URL}    http://localhost:8080
 ${BROWSER}    Chrome
 ${USERNAME}    sandy
 ${PASSWORD}    password
@@ -32,8 +32,8 @@ Login As Owner
     Input Text      xpath=//input[contains(@name, 'password')]    ${PASSWORD}
     Click Button    xpath=//input[contains(@value, '2')]
     Click Button    xpath=//button[contains(text(), 'Login')]
-    Wait Until Page Contains Element    xpath=//h2[contains(text(), 'Appointment')]
-    Page Should Contain Element    xpath=//h2[contains(text(), 'Appointment')]
+    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]
+    Page Should Contain Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]
 
 Create Pet
     Click Element    xpath=//li[contains(@id, 'Owners')]

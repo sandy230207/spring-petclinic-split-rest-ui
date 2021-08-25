@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 Library           RequestsLibrary
 
 *** Variables ***
-${URL}    http://localhost:4200
+${URL}    http://localhost:8080
 ${BROWSER}    Chrome
 ${USERNAME}    daisy
 ${PASSWORD}    000000
@@ -29,7 +29,7 @@ Login As Vet
     Input Text      xpath=//input[contains(@name, 'password')]    ${PASSWORD}
     Click Button    xpath=//input[contains(@value, '1')]
     Click Button    xpath=//button[contains(text(), 'Login')]
-    Wait Until Page Contains Element    xpath=//h2[contains(text(), 'Appointment')]
+    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]
 
 Create A Pet Type
     Click Element    xpath=//a[contains(@routerlink, '/pettypes')]
