@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 Library           RequestsLibrary
 
 *** Variables ***
-${URL}    http://localhost:8080
+${HOMEURL}    ${URL}:8080
 ${BROWSER}    Chrome
 ${USERNAME}    daisy
 ${PASSWORD}    000000
@@ -18,7 +18,11 @@ Create Pet Type As Vet
 
 *** Keywords ***
 Open Browser To Petclinic And Login As Vet
-    Open Browser    ${URL}    ${BROWSER}
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method     ${chrome_options}   add_argument    --headless
+    Create WebDriver    ${BROWSER}    chrome_options=${chrome_options}
+    Set Window Size    ${1920}    ${1080}
+    Go To    ${HOMEURL}
     Wait Until Page Contains Element    xpath=//form[contains(@id, 'signin')]
     Title Should Be    SpringPetclinicAngular
     Login As Vet    ${USERNAME}    ${PASSWORD}
@@ -29,7 +33,7 @@ Login As Vet
     Input Text      xpath=//input[contains(@name, 'password')]    ${PASSWORD}
     Click Button    xpath=//input[contains(@value, '1')]
     Click Button    xpath=//button[contains(text(), 'Login')]
-    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]
+    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]    timeout=10
 
 Create A Pet Type
     Click Element    xpath=//a[contains(@routerlink, '/pettypes')]
@@ -46,18 +50,3 @@ Create A Pet Type
 Delete New Pet Type And Close Browser
     Click Button    xpath=//input[@ng-reflect-model='${PETTYPENAME}' and @ng-reflect-name='pettype_name']//parent::td//following-sibling::td[1]//descendant::button[contains(text(), 'Delete')]
     Close Browser
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

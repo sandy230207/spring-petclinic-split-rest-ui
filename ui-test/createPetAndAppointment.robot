@@ -1,79 +1,52 @@
 *** Settings ***
-Documentation     A Test That Test Create Function of Pet and Appointment as Owner
+Documentation     A Test That Test Create Function of Pet Types as Vet
 Library           SeleniumLibrary
+Library           RequestsLibrary
 
 *** Variables ***
-${URL}    http://localhost:8080
+${HOMEURL}    ${URL}:8080
 ${BROWSER}    Chrome
-${USERNAME}    sandy
-${PASSWORD}    password
-${PETNAME}    Lucky
-${PETBIRTHDATE}    2021/02/01
-${APPOINTMENTDATE}    2029/01/01
-${APPOINTMENTDESCRIPTION}    Periodical health check
+${USERNAME}    daisy
+${PASSWORD}    000000
+${PETTYPENAME}    鱷魚
 
 *** Test Cases ***
-Create Pet And Appointment As Owner
-    [Setup]    Open Browser To Petclinic And Login As Owner
-    Create Pet
-    Make Appointment
-    [Teardown]    Delete New Pet And Appointment And Close Browser
+Create Pet Type As Vet
+    [Setup]    Open Browser To Petclinic And Login As Vet
+    Create A Pet Type
+    [Teardown]    Delete New Pet Type And Close Browser
 
 *** Keywords ***
-Open Browser To Petclinic And Login As Owner
-    Open Browser    ${URL}    ${BROWSER}
+Open Browser To Petclinic And Login As Vet
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method     ${chrome_options}   add_argument    --headless
+    Create WebDriver    ${BROWSER}    chrome_options=${chrome_options}
+    Set Window Size    ${1920}    ${1080}
+    Go To    ${HOMEURL}
     Wait Until Page Contains Element    xpath=//form[contains(@id, 'signin')]
     Title Should Be    SpringPetclinicAngular
-    Login As Owner    ${USERNAME}    ${PASSWORD}
+    Login As Vet    ${USERNAME}    ${PASSWORD}
 
-Login As Owner
+Login As Vet
     [Arguments]     ${USERNAME}    ${PASSWORD}
     Input Text      xpath=//input[contains(@name, 'username')]    ${USERNAME}    
     Input Text      xpath=//input[contains(@name, 'password')]    ${PASSWORD}
-    Click Button    xpath=//input[contains(@value, '2')]
+    Click Button    xpath=//input[contains(@value, '1')]
     Click Button    xpath=//button[contains(text(), 'Login')]
-    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]
-    Page Should Contain Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]
+    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]    timeout=10
 
-Create Pet
-    Click Element    xpath=//li[contains(@id, 'Owners')]
-    Wait Until Page Contains Element    xpath=//li[contains(@class, 'dropdown open')]
-    Click Element    xpath=//a[contains(@ng-reflect-router-link, 'owners')]
-    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Owner Information')]
-    Sleep    3
-    Click Element     xpath=//button[contains(text(), 'Add New Pet')]
-    Wait Until Page Contains Element    xpath=//h2[contains(text(), 'Add Pet')]
-    Input Text    xpath=//input[@name='name']    ${PETNAME}
-    Input Text    xpath=//input[contains(@name, 'birthDate')]    ${PETBIRTHDATE}
-    Click Element    xpath=//select[contains(@name, 'type')]
-    Click Element    xpath=//option[contains(@value, '0')]
-    Click Button    xpath=//button[contains(text(), 'Save Pet')]
-    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Owner Information')]
+Create A Pet Type
+    Click Element    xpath=//a[contains(@routerlink, '/pettypes')]
+    Wait Until Page Contains Element    xpath=//h2[contains(text(), 'Pet Types')]
+    Wait Until Page Contains Element    xpath=//button[contains(text(), 'Add')]  
+    Click Button    xpath=//button[contains(text(), 'Add')]
+    Wait Until Page Contains Element    xpath=//h2[contains(text(), 'New Pet Type')]
+    Wait Until Page Contains Element    xpath=//input[@name='name'] 
+    Input Text    xpath=//input[@name='name']    ${PETTYPENAME}
+    Click Button    xpath=//button[contains(text(), 'Save')]
+    Wait Until Page Contains Element    xpath=//input[@ng-reflect-model='${PETTYPENAME}' and @ng-reflect-name='pettype_name']
+    Page Should Contain Element    xpath=//input[@ng-reflect-model='${PETTYPENAME}' and @ng-reflect-name='pettype_name']
 
-Make Appointment
-    Wait Until Page Contains Element    xpath=//button[contains(text(), 'Make Appointment')]
-    Click Button    xpath=//button[contains(text(), 'Make Appointment')]
-    Wait Until Page Contains Element    xpath=//h2[contains(text(), 'New Visit')]
-    Input Text    xpath=//input[contains(@name, 'date')]    ${APPOINTMENTDATE}
-    Input Text    xpath=//input[contains(@name, 'description')]    ${APPOINTMENTDESCRIPTION}
-    Click Button    xpath=//button[contains(text(), 'Make Appointment')]
-    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Owner Information')]
-
-Delete New Pet And Appointment And Close Browser
-    Wait Until Page Contains Element    xpath=//button[contains(text(), 'Delete Pet')]
-    Click Button    xpath=//button[contains(text(), 'Delete Pet')]
+Delete New Pet Type And Close Browser
+    Click Button    xpath=//input[@ng-reflect-model='${PETTYPENAME}' and @ng-reflect-name='pettype_name']//parent::td//following-sibling::td[1]//descendant::button[contains(text(), 'Delete')]
     Close Browser
-
-
-
-
-
-
-
-
-
-
-
-
-
-
