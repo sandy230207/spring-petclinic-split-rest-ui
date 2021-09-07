@@ -22,13 +22,13 @@
 
 export const environment = {
   production: true,
-  APPOINTMENT_URL:'http://localhost:9966/petclinic/api/appointment',
-  USERS_API_URL: 'http://localhost:9967/petclinic/api/users',
-  USERS_OWNER_API_URL: 'http://localhost:9966/petclinic/api/users',
-  OWNER_API_URL: 'http://localhost:9966/petclinic/api/owners',
-  PET_API_URL: 'http://localhost:9966/petclinic/api/pets',
-  PETTYPES_API_URL: 'http://localhost:9966/petclinic/api/pettypes',
-  SPECIALTY_API_URL: 'http://localhost:9967/petclinic/api/specialties',
-  VET_API_URL: 'http://localhost:9967/petclinic/api/vets',
-  VISIT_API_URL: 'http://localhost:9966/petclinic/api/visits'
+  APPOINTMENT_URL:'http://owner-petclinic-k8s-spring-petclinic-owner.test-petclinic:9966/petclinic/api/appointment',
+  USERS_API_URL: 'http://vet-petclinic-k8s-spring-petclinic-vet.test-petclinic:9967/petclinic/api/users',
+  USERS_OWNER_API_URL: 'http://owner-petclinic-k8s-spring-petclinic-owner.test-petclinic:9966/petclinic/api/users',
+  OWNER_API_URL: 'http://owner-petclinic-k8s-spring-petclinic-owner.test-petclinic:9966/petclinic/api/owners',
+  PET_API_URL: 'http://owner-petclinic-k8s-spring-petclinic-owner.test-petclinic:9966/petclinic/api/pets',
+  PETTYPES_API_URL: 'http://owner-petclinic-k8s-spring-petclinic-owner.test-petclinic:9966/petclinic/api/pettypes',
+  SPECIALTY_API_URL: 'http://vet-petclinic-k8s-spring-petclinic-vet.test-petclinic:9967/petclinic/api/specialties',
+  VET_API_URL: 'http://vet-petclinic-k8s-spring-petclinic-vet.test-petclinic:9967/petclinic/api/vets',
+  VISIT_API_URL: 'http://owner-petclinic-k8s-spring-petclinic-owner.test-petclinic:9966/petclinic/api/visits'
 };

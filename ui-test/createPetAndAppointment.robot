@@ -3,7 +3,7 @@ Documentation     A Test That Test Create Function of Pet and Appointment as Own
 Library           SeleniumLibrary
 
 *** Variables ***
-${URL}    http://localhost:8080
+${HOMEURL}    ${URL}:8080
 ${BROWSER}    Chrome
 ${USERNAME}    sandy
 ${PASSWORD}    password
@@ -21,7 +21,11 @@ Create Pet And Appointment As Owner
 
 *** Keywords ***
 Open Browser To Petclinic And Login As Owner
-    Open Browser    ${URL}    ${BROWSER}
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method     ${chrome_options}   add_argument    --headless
+    Create WebDriver    ${BROWSER}    chrome_options=${chrome_options}
+    Set Window Size    ${1920}    ${1080}
+    Go To    ${HOMEURL}
     Wait Until Page Contains Element    xpath=//form[contains(@id, 'signin')]
     Title Should Be    SpringPetclinicAngular
     Login As Owner    ${USERNAME}    ${PASSWORD}
@@ -32,7 +36,7 @@ Login As Owner
     Input Text      xpath=//input[contains(@name, 'password')]    ${PASSWORD}
     Click Button    xpath=//input[contains(@value, '2')]
     Click Button    xpath=//button[contains(text(), 'Login')]
-    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]
+    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]    timeout=10
     Page Should Contain Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]
 
 Create Pet

@@ -4,8 +4,7 @@ Library           SeleniumLibrary
 Library           RequestsLibrary
 
 *** Variables ***
-${URL}    http://localhost:8080
-
+${HOMEURL}    ${URL}:8080
 ${BROWSER}    Chrome
 ${USERNAME}    kristin
 ${PASSWORD}    password
@@ -15,7 +14,7 @@ ${ADDRESS}    No.48, Lane 187, Chiung Lin S. Rd.
 ${CITY}    Taipei
 ${TELEPHONE}    0948998494    
 
-${DELETEUSERURL}    http://localhost:9966/petclinic/api/users/kristin
+${DELETEUSERURL}    ${URL}:9966/petclinic/api/users/kristin
 
 
 *** Test Cases ***
@@ -30,7 +29,11 @@ Create Owner User
 
 *** Keywords ***
 Open Browser To Petclinic And Go To Create User Page
-    Open Browser    ${URL}    ${BROWSER}
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method     ${chrome_options}   add_argument    --headless
+    Create WebDriver    ${BROWSER}    chrome_options=${chrome_options}
+    Set Window Size    ${1920}    ${1080}
+    Go To    ${HOMEURL}
     Wait Until Page Contains Element    xpath=//form[contains(@id, 'signin')]
     Title Should Be    SpringPetclinicAngular
     Click Button    xpath=//button[contains(text(), 'Go To Sign Up Page')]
@@ -44,7 +47,7 @@ Create Owner User
     Input Text    xpath=//input[contains(@id, 'city')]    ${CITY}
     Input Text    xpath=//input[contains(@id, 'telephone')]    ${TELEPHONE}
     Click Button    xpath=//button[contains(text(), 'Register')]
-    Wait Until Page Contains Element    xpath=//form[contains(@id, 'signin')]
+    Wait Until Page Contains Element    xpath=//form[contains(@id, 'signin')]    timeout=10
 
 Close Browser And Delete Testing User
     Close Browser
@@ -56,4 +59,4 @@ Login As Owner
     Input Text      xpath=//input[contains(@name, 'password')]    ${PASSWORD}
     Click Button    xpath=//input[contains(@value, '2')]
     Click Button    xpath=//button[contains(text(), 'Login')]
-    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]
+    Wait Until Page Contains Element    xpath=//h1[contains(text(), 'Welcome to Petclinic')]    timeout=10
